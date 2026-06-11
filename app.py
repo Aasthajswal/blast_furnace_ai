@@ -652,11 +652,10 @@ with tab4:
     ---
 
     ### 👩‍💻 Built By
-    **Aastha Jaiswal** | B.Tech CSE, KIIT University 2026
+    **Aastha Jaiswal** | B.Tech CSE, KIIT University 2027
 
-    *SAIL Bokaro Steel Plant Internship | BSL URN: 5914843*
+    *SAIL Bokaro Steel Plant Internship *
     """)
 
 
 st.markdown("---")
-st.caption("Blast Furnace AI Optimization System | Aastha Jaiswal | KIIT 2026 | SAIL Bokaro")
