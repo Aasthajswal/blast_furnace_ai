@@ -383,7 +383,7 @@ with tab1:
                 label="Thermal Efficiency",
                 good_range=(58, 72), warn_range=(50, 80), unit="%"
             )
-            st.pyplot(gfig, use_container_width=False)
+            st.pyplot(gfig, width="content")
             plt.close()
 
         st.markdown("---")
@@ -415,11 +415,10 @@ with tab1:
         st.markdown("---")
         st.markdown("#### 🎯 Optimized Parameters (based on your current input)")
         st.caption(
-            "Grid search over blast\_temp × coke\_rate × pci\_rate (7×7×4 = 196 combos), "
+            "Grid search over blast_temp × coke_rate × pci_rate (7×7×4 = 196 combos), "
             "fixing oxygen, air flow, burden and moisture at your current values. "
-            "Composite score: hot\_metal − 0.3×fuel + 0.5×efficiency."
+            "Composite score: hot_metal − 0.3×fuel + 0.5×efficiency."
         )
-
         opt_params, opt_pred = smart_optimize(current_params, best_model)
 
         oc1, oc2, oc3 = st.columns(3)
@@ -450,7 +449,11 @@ with tab1:
                          "Your Value": f"{cur:.1f}",
                          "Suggested":  f"{opt:.1f}",
                          "Change":     f"{arrow} {abs(diff):.1f}"})
-        st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
+        st.dataframe(
+            pd.DataFrame(rows),
+            width="stretch",
+            hide_index=True
+        )
         st.caption("⚠️ Treat as directional guidance — based on synthetic data.")
 
 
@@ -467,10 +470,10 @@ with tab2:
         st.markdown("#### R² Scores")
         st.dataframe(
             results.style
-                .highlight_max(subset=['Average R²'],   color='#d4f5e0')
-                .highlight_min(subset=['Average RMSE'], color='#d4f5e0')
-                .format({'Average R²': '{:.4f}', 'Average RMSE': '{:.4f}'}),
-            use_container_width=True
+            .highlight_max(subset=['Average R²'], color='#d4f5e0')
+            .highlight_min(subset=['Average RMSE'], color='#d4f5e0')
+            .format({'Average R²': '{:.4f}', 'Average RMSE': '{:.4f}'}),
+            width="stretch"
         )
         st.markdown("""
         **Key Finding:** Linear Regression (R² = 0.8443) outperformed all ensemble
